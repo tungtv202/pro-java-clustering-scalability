@@ -17,7 +17,7 @@ public class WebSocketEvents {
 	private ChatRoomService chatRoomService;
 	
 	@EventListener
-	private void handleSessionConnected(SessionConnectEvent event) {
+	public void handleSessionConnected(SessionConnectEvent event) {
 		SimpMessageHeaderAccessor headers = SimpMessageHeaderAccessor.wrap(event.getMessage());
 		String chatRoomId = headers.getNativeHeader("chatRoomId").get(0);
 		headers.getSessionAttributes().put("chatRoomId", chatRoomId);
@@ -27,7 +27,7 @@ public class WebSocketEvents {
 	}
 
 	@EventListener
-	private void handleSessionDisconnect(SessionDisconnectEvent event) {
+	public void handleSessionDisconnect(SessionDisconnectEvent event) {
 		SimpMessageHeaderAccessor headers = SimpMessageHeaderAccessor.wrap(event.getMessage());
 		String chatRoomId = headers.getSessionAttributes().get("chatRoomId").toString();
 		ChatRoomUser leavingUser = new ChatRoomUser(event.getUser().getName());

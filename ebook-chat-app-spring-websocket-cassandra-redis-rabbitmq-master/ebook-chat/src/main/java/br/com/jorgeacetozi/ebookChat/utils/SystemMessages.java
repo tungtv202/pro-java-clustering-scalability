@@ -5,7 +5,7 @@ import br.com.jorgeacetozi.ebookChat.chatroom.domain.model.InstantMessageBuilder
 
 public class SystemMessages {
 	
-	public static final InstantMessage welcome(String chatRoomId, String username) {
+	public static InstantMessage welcome(String chatRoomId, String username) {
 		return new InstantMessageBuilder()
 				.newMessage()
 				.withChatRoomId(chatRoomId)
@@ -13,7 +13,7 @@ public class SystemMessages {
 				.withText(username + " joined us :)");
 	}
 
-	public static final InstantMessage goodbye(String chatRoomId, String username) {
+	public static InstantMessage goodbye(String chatRoomId, String username) {
 		return new InstantMessageBuilder()
 				.newMessage()
 				.withChatRoomId(chatRoomId)

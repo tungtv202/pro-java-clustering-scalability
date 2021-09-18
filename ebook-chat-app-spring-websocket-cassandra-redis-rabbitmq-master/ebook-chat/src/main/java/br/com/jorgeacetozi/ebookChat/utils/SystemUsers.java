@@ -8,7 +8,7 @@ public enum SystemUsers {
 		this.username = username;
 	}
 	
-	private String username;
+	private final String username;
 
 	public String getUsername() {
 		return this.username;

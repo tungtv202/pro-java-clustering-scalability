@@ -44,14 +44,13 @@ public class RedisChatRoomService implements ChatRoomService {
 	}
 
 	@Override
-	public ChatRoom leave(ChatRoomUser leavingUser, ChatRoom chatRoom) {
+	public void leave(ChatRoomUser leavingUser, ChatRoom chatRoom) {
 		sendPublicMessage(SystemMessages.goodbye(chatRoom.getId(), leavingUser.getUsername()));
 		
 		chatRoom.removeUser(leavingUser);
 		chatRoomRepository.save(chatRoom);
 		
 		updateConnectedUsersViaWebSocket(chatRoom);
-		return chatRoom;
 	}
 
 	@Override
